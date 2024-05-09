@@ -19,7 +19,6 @@ jobs:
 
     - name: Update Vcpkg submodule
       run: |
-        git submodule update --init --recursive
         cd vcpkg
         git fetch
         git merge origin/master  
