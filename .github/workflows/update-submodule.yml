@@ -18,12 +18,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Update Vcpkg submodule
-      run: |
-        git submodule update --remote --merge  
+      run: | 
         cd vcpkg
-        git fetch
-        git merge origin/master  
+        git checkout master 
+        git pull origin master 
         cd ../
+        git submodule update --remote
         git checkout -b update-vcpkg
         git add vcpkg
         git commit -m "Update Vcpkg submodule to latest commit"
