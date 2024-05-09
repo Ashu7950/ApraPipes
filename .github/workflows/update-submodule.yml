@@ -19,6 +19,7 @@ jobs:
 
     - name: Update Vcpkg submodule
       run: |
+        git submodule update --remote --merge  
         cd vcpkg
         git fetch
         git merge origin/master  
