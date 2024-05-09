@@ -20,8 +20,8 @@ jobs:
     - name: Update Vcpkg submodule
       run: | 
         cd vcpkg
-        git checkout master 
-        git pull origin master 
+        git checkout main 
+        git pull origin main 
         cd ../
         git submodule update --remote
         git checkout -b update-vcpkg
