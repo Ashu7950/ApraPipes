@@ -31,8 +31,9 @@ jobs:
       cuda: 'ON'
       prep-cmd: 'echo skipping builder prep as I can not sudo'
       skip-test: true 
-      cache-path: '/github/home/.cache/vcpkg/archives'
-      nProc: 3
+      # cache-path: '/github/home/.cache/vcpkg/archives'
+      # cache-path: './none'
+      nProc: 6
   
   
 
