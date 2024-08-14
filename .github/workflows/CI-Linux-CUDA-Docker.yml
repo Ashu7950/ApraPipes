@@ -25,15 +25,14 @@ jobs:
   linux-cuda-docker-build-no-test:
     uses: ./.github/workflows/build-test-lin-container.yml
     with:
-      runner: 'ubuntu-20.04'
+      runner: 'self-hosted, Linux, X64' 
       flav: Linux-Cuda
-      is-selfhosted: false      
+      is-selfhosted: true      
       cuda: 'ON'
       prep-cmd: 'echo skipping builder prep as I can not sudo'
       skip-test: true 
       # cache-path: '/github/home/.cache/vcpkg/archives'
       # cache-path: './none'
       nProc: 6
-  
   
 
