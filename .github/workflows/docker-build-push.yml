@@ -16,6 +16,8 @@ jobs:
       # Check out the code from the repository
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
       # Log in to GitHub Container Registry using the provided GITHUB_TOKEN
       # - name: Log in to GitHub Container Registry
