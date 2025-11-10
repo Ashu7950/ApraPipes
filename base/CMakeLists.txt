@@ -313,7 +313,7 @@ message(STATUS $ENV{PKG_CONFIG_PATH}">>>>>> PKG_CONFIG_PATH")
 # ============================================================================
 # Component-Based Dependency Resolution
 # ============================================================================
-find_package(PkgConfig REQUIRED)
+
 
 # Add custom cmake modules directory for FindCUDA.cmake compatibility
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -348,6 +348,7 @@ endif()
 
 # --- GTK_RENDERING Component Dependencies (Linux only) ---
 if(APRAPIPES_ENABLE_GTK_RENDERING AND ENABLE_LINUX)
+	find_package(PkgConfig REQUIRED)
 	find_package(GLEW REQUIRED)
 	find_package(glfw3 CONFIG REQUIRED)
 	find_package(FreeGLUT CONFIG REQUIRED)
