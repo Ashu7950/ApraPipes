@@ -62,7 +62,8 @@
                                                                                         "jpeg",
                                                                                         "png",
                                                                                         "tiff",
-                                                                                        "webp"
+                                                                                        "webp",
+                                                                                        "highgui"
                                                                                     ]
                                                                    }
                                                                ]
