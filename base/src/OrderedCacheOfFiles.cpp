@@ -320,20 +320,28 @@ bool OrderedCacheOfFiles::isTimeStampInFile(std::string& filePath, uint64_t time
 		return false;
 	}
 
-	if (!videoIter->end_ts) // we havent opened the video yet.
+    // Store the iterator values in local variables
+	uint64_t file_start_ts = videoIter->start_ts;
+	uint64_t file_end_ts = videoIter->end_ts;
+
+	if (file_end_ts == 0) // we havent opened the video yet.
 	{
-		uint64_t tstart_ts, tend_ts;
-		readVideoStartEnd(filePath, tstart_ts, tend_ts);
-		updateCache(filePath, tstart_ts, tend_ts);
+		uint64_t tstart_ts_from_file, tend_ts_from_file;
+		readVideoStartEnd(filePath, tstart_ts_from_file, tend_ts_from_file);
+		updateCache(filePath, tstart_ts_from_file, tend_ts_from_file);
+
+        // Overwrite local variables with the new values we just read.
+		file_start_ts = tstart_ts_from_file;
+		file_end_ts = tend_ts_from_file;
 	}
 
-	if (timestamp >= videoIter->start_ts && timestamp <= videoIter->end_ts)
+    // Now, this check uses the correct, most up-to-date values
+	if (timestamp >= file_start_ts && timestamp <= file_end_ts)
 	{
 		return true;
 	}
 	return false;
 }
-
 void OrderedCacheOfFiles::readVideoStartEnd(std::string& filePath, uint64_t& start_ts, uint64_t& end_ts)
 {
 	// open the file
