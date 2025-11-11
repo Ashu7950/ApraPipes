@@ -166,13 +166,13 @@ cv::Mat Utils::getMatHeader(int width, int height, int type)
 	uint8_t data;	
 	return cv::Mat(height, width, type, static_cast<void*>(&data));
 }
-
+#ifdef APRA_CUDA_ENABLED
 cv::cuda::GpuMat Utils::getGPUMatHeader(cv::Rect& roi, RawImageMetadata* rawMetadata)
 {
 	uint8_t data;
     return cv::cuda::GpuMat(roi.height, roi.width, rawMetadata->getType(),  static_cast<void*>(&data), rawMetadata->getStep());
 }
-
+#endif
 void Utils::round_roi(cv::Rect &roi, int alignLength)
 {
 	auto extra = roi.x % alignLength;
