@@ -342,7 +342,7 @@ endif()
 
 # --- AUDIO Component Dependencies ---
 if(APRAPIPES_ENABLE_AUDIO)
-	find_package(SFML COMPONENTS System window audio graphics CONFIG REQUIRED)
+	find_package(SFML COMPONENTS System Window Audio Graphics CONFIG REQUIRED)
 	find_package(whisper CONFIG REQUIRED)
 endif()
 
